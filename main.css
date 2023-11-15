@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.search-container {
+    position: relative;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.clear-icon {
+    position: absolute;
+    top: 50%;
+    right: 7px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: url('clear-icon.png') no-repeat center center;
+    background-size: cover;
+    cursor: pointer;
+    display: none;
+}
