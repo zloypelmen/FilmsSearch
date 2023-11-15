@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('searchInput');
     const clearInput = document.getElementById('clearInput');
+    const apiKey = '1e35f6bb'; 
 
     searchInput.addEventListener('input', function () {
         if (searchInput.value.trim() !== '') {
@@ -24,7 +25,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function performSearch() {
         const query = searchInput.value.trim();
-        // Здесь можно добавить логику отправки запроса и отображения результатов
-        console.log('Выполняется поиск для запроса: ', query);
+
+        if (query !== '') {
+            fetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Результаты поиска:', data);
+                })
+                .catch(error => {
+                    console.error('Ошибка при выполнении запроса:', error);
+                });
+        }
+        else{
+
+        }
     }
 });
