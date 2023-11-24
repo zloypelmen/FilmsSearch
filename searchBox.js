@@ -73,9 +73,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         else {
             const plotElement = document.createElement('p');
-            plotElement.textContent = 'NO INFO';
+            plotElement.textContent = 'Введите название фильма! ';
 
-            const resultContainer = document.getElementById('resultContainer');
+            const resultContainer = document.getElementById('errorContainer');
             resultContainer.style.display = 'flex'; 
             resultContainer.appendChild(plotElement);
         }
