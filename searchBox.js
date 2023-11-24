@@ -67,16 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                     
                 })
-                .catch(error => {   
-                    clearPreviousResults();
-
-                    const titleError = document.createElement('p');
-                    titleError.textContent = error; 
-
-                    const errorContainer = document.getElementById('errorContainer');
-                    errorContainer.style.display = 'flex'; 
-                    errorContainer.appendChild(titleError);
-                    
+                .catch(error => {
                     console.error('Ошибка при выполнении запроса:', error);
                 });
         }

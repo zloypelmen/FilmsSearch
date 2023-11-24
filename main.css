@@ -85,8 +85,8 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #333; /* Цвет фона футера */
-    color: #fff; /* Цвет текста футера */
+    background-color: #333; 
+    color: #fff; 
     padding: 10px;
     text-align: center;
 
