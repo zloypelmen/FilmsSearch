@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     searchInput.addEventListener('input', function () {
         if (searchInput.value.trim() !== '') {
-            clearInput.style.display = 'block';
+            clearInput.style.display = 'flex';
         } else {
             clearInput.style.display = 'none';
         }
@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     searchInput.addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
-            hideErrorContainer()
+            clearPreviousResults();
+            hideResultContainer();
             performSearch();
         }
     });
@@ -67,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     
                 })
                 .catch(error => {   
-                    hideResultContainer();
+                    clearPreviousResults();
 
                     const titleError = document.createElement('p');
                     titleError.textContent = error; 
@@ -105,8 +106,5 @@ document.addEventListener('DOMContentLoaded', function () {
         resultContainer.style.display = 'none';
     }
 
-    function hideErrorContainer() {
-        const resultContainer = document.getElementById('errorContainer');
-        resultContainer.style.display = 'none';
-    }
+
 });

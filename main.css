@@ -66,31 +66,19 @@ input {
 }
 
 .error-box{
-    padding-top: 20px;
     display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    
     padding-bottom: 30px;
 }
 
 .error-box p{
-    text-align: left;
     color: #5c5252;
     font-family: PT Sans;
-    font-size:20px;
-    font-style: bolt;
-    font-weight: 400;   
-}
-
-.error-box p{
-    width: 100%;
-    display: flex;
-    text-align: left;
-    color: #000;
-    font-family: PT Sans;
-    font-size: 18px;
+    font-size: 20px;
     font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin: 5px 37.5px 0;
+    font-weight: 400;   
 }
 
 footer {
