@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FilmsSearch</title>
     <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
 
-<div class="search-container">
-    <input type="text" id="searchInput" placeholder="Введите запрос">
-    <span class="clear-icon" id="clearInput"></span>
-</div>
+    <header>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Введите запрос">
+            <span class="clear-icon" id="clearInput"></span>
+        </div>
+    </header>
 
-<script src="addEventListener.js"></script>
+    <main>
+        <div class="shadow-box" id="resultContainer">
+
+        </div>
+
+        <div class="error-box" id="errorContainer">
+
+            <p>В ведите запрос в строку поиска</p>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="text-center">
+            <small class="copyright"><a href="https://vk.com/magnum94" target="_blank">Git Hub</a> 2023</small>
+        </div>
+    </footer>
+
+    <script src="searchBox.js"></script>
 </body>
+
 </html>
