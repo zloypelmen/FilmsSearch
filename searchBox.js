@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('searchInput');
     const clearInput = document.getElementById('clearInput');
-    const apiKey = '1e35f6bb'; 
+    const apiKey = '1e35f6bb';
 
     searchInput.addEventListener('input', function () {
         if (searchInput.value.trim() !== '') {
@@ -31,41 +31,52 @@ document.addEventListener('DOMContentLoaded', function () {
         const query = searchInput.value.trim();
 
         if (query !== '') {
-            fetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${encodeURIComponent(query)}`)
+            fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=${encodeURIComponent(query)}`)
                 .then(response => response.json())
                 .then(data => {
 
                     clearPreviousResults();
 
-                    if(data.Response == "False"){
+                    if (data.Response == "False") {
                         const titleError = document.createElement('p');
-                        titleError.textContent = data.Error; 
+                        titleError.textContent = data.Error;
 
                         const errorContainer = document.getElementById('errorContainer');
-                        errorContainer.style.display = 'flex'; 
+                        errorContainer.style.display = 'flex';
                         errorContainer.appendChild(titleError);
-                    
+
                         console.error('Ошибка при выполнении запроса:', error);
                     }
-                    else{
-                        const posterElement = document.createElement('img');
-                        posterElement.src = data.Poster;
-
-                        const titleElement = document.createElement('h2');
-                        titleElement.textContent = data.Title;
-    
-                        const plotElement = document.createElement('p');
-                        plotElement.textContent = `${data.Plot}`;
-    
+                    else {
                         const resultContainer = document.getElementById('resultContainer');
-                        resultContainer.style.display = 'flex'; 
-                        resultContainer.appendChild(posterElement);
-                        resultContainer.appendChild(titleElement);
-                        resultContainer.appendChild(plotElement);
-                    
-                    console.log('Результаты поиска:', data);
+                        resultContainer.style.display = 'flex';
+
+                        data.Search.forEach(movie => {
+                            const movieCard = document.createElement('div');
+                            movieCard.classList.add('shadow-box'); 
+        
+                            const posterElement = document.createElement('img');
+                            posterElement.src = movie.Poster;
+    
+                            const titleElement = document.createElement('h4');
+                            titleElement.textContent = movie.Title;
+        
+                            const YearElement = document.createElement('p');
+                            YearElement.textContent = `${movie.Year}`;
+        
+                            const resultContainer = document.getElementById('resultContainer');
+                            resultContainer.style.display = 'flex'; 
+        
+                            movieCard.appendChild(posterElement);
+                            movieCard.appendChild(titleElement);    
+                            movieCard.appendChild(YearElement);
+        
+                            resultContainer.appendChild(movieCard);
+                        });
+
+                        console.log('Результаты поиска:', data);
                     }
-                    
+
                 })
                 .catch(error => {
                     console.error('Ошибка при выполнении запроса:', error);
@@ -76,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
             plotElement.textContent = 'Введите название фильма! ';
 
             const resultContainer = document.getElementById('errorContainer');
-            resultContainer.style.display = 'flex'; 
+            resultContainer.style.display = 'flex';
             resultContainer.appendChild(plotElement);
         }
     }
@@ -84,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function clearPreviousResults() {
         const resultContainer = document.getElementById('resultContainer');
         const errorContainer = document.getElementById('errorContainer');
-        while (resultContainer.firstChild ) {
+        while (resultContainer.firstChild) {
             resultContainer.removeChild(resultContainer.firstChild);
         }
         while (errorContainer.firstChild) {
